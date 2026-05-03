@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.navbar {
+  padding: 1rem;
+  background: #e0f7fa;
+}
+
+.nav-link {
+  margin-right: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-link:hover {
+  color: #00796b;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.responsive-img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}

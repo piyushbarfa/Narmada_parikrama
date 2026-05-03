@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narmada Parikrama - Home</title>
+    
+    <!-- Premium Typography: Merriweather for headings, Open Sans for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+      /* High-end UI Styles for the Home Page */
+      :root {
+        --primary: #00796b;
+        --primary-dark: #005a4f;
+        --text-dark: #333333;
+        --text-muted: #666666;
+      }
+      
+      body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-dark);
+        background-color: #fcfcfc;
+        overflow: hidden; /* Disables scrolling completely */
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Merriweather', serif;
+      }
+
+      /* Transparent Navbar */
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        z-index: 10;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+        background: transparent;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #b2dfdb;
+      }
+
+      /* Stunning Full-Screen Hero Section */
+      .hero-section {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        /* Using your new image as a parallax background */
+        background-image: url('Images/home_image.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+        background-color: var(--primary);
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 90, 79, 0.5);
+      }
+
+      /* Elegant Content Section */
+      .content-section {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        text-align: center;
+      }
+
+      .content-section h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+      }
+
+      .content-section p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Modern Feature Cards */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      }
+
+      .feature-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      /* Minimalist Footer */
+      footer {
+        background-color: #263238;
+        color: rgba(255,255,255,0.7);
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="parikrama-guide.html" class="nav-link">Parikrama Guide</a>
+      </div>
+    </nav>
+    
+    <!-- Hero Banner with Background Image -->
+    <header class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>नर्मदा परिक्रमा</h1>
+        <h2>आस्था और प्रवाह की एक पवित्र यात्रा </h2>
+        <p>मध्य भारत की सबसे श्रद्धेय नदी के किनारे 1,312 किलोमीटर लंबे आध्यात्मिक पथ का अनुभव करें।</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">About Narmada</a>
+          <a href="parikrama-guide.html" class="btn-primary">Narmada Parikrama</a>
+        </div>
+      </div>
+    </header>
+      
+    <!-- Main Content Area -->
+    <main class="content-section">
+      <h2>About the Holy Narmada</h2>
+      <p>
+        The Narmada, also known as Rewa, is the fifth longest river in India and one of the seven holy rivers of Hinduism.
+        Flowing westwards over a length of around 1,312 km, it plays a magnificent role in the ecology and culture of Central India.
+      </p>
+      <p>
+        Originating from the Amarkantak Plateau, the Narmada traverses picturesque landscapes, renowned for its ancient ghats and timeless temples.
+        Its journey to the Arabian Sea is marked by spiritual significance, an unmatched pilgrimage, and breathtaking natural beauty.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Spiritual Awakening</h3>
+          <p>Undertake a journey that cleanses the soul. The circumambulation connects you deeply with the paths of ancient sages.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Ancient Temples</h3>
+          <p>Visit sacred shrines like Omkareshwar and Maheshwar, architectural marvels steeped in millennia of devotion.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Breathtaking Ghats</h3>
+          <p>Witness the enchanting evening aartis on the tranquil ghats, where profound devotion meets the serene flow of the river.</p>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2024 Narmada Parikrama. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
