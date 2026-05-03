@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Narmada Parikrama - Important Places</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+      /* Midnight River Design System */
+      :root {
+        --bg-midnight: #0B1319;
+        --glass-bg: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --teal-accent: #00796b;
+        --gold-accent: #D4AF37;
+        --text-main: #ffffff;
+        --text-muted: #a0aec0;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-main);
+        background-color: var(--bg-midnight);
+        overflow: hidden; /* Lock viewport for Master-Detail layout */
+      }
+
+      h1, h2, h3, .playfair {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .hindi-text {
+        font-family: 'Noto Sans Devanagari', sans-serif;
+      }
+
+      /* Glassmorphic Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        z-index: 100;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+        background: rgba(11, 19, 25, 0.5);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--gold-accent);
+      }
+
+      /* Master-Detail Layout Architecture */
+      .master-detail-container {
+        display: flex;
+        height: 100vh;
+        padding-top: 80px; /* Accounts for navbar */
+        box-sizing: border-box;
+      }
+
+      /* LEFT COLUMN (60% Details & Media) */
+      .detail-column {
+        width: 60%;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .media-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        background: #1a202c; /* Fallback loading color */
+      }
+
+      .media-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .image-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(11, 19, 25, 0.9) 0%, rgba(0,0,0,0) 60%);
+        z-index: 1;
+      }
+
+      .info-overlay {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 2.5rem;
+        width: calc(100% - 5rem);
+        max-width: 600px;
+        background: rgba(20, 30, 40, 0.65);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 2rem;
+        z-index: 2;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      }
+
+      .info-title {
+        font-size: 2.2rem;
+        margin: 0 0 1rem 0;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      .info-desc {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+        margin-bottom: 2rem;
+      }
+
+      .btn-explore {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        background: var(--gold-accent);
+        color: #000000;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .btn-explore:hover {
+        transform: translateY(-3px);
+        background: #e6c24b;
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+      }
+
+      /* RIGHT COLUMN (40% Interactive List) */
+      .master-column {
+        width: 40%;
+        padding: 2rem 3rem 2rem 1.5rem;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+
+      /* Custom thin dark teal scrollbar */
+      .master-column::-webkit-scrollbar {
+        width: 6px;
+      }
+      .master-column::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .master-column::-webkit-scrollbar-thumb {
+        background: var(--teal-accent);
+        border-radius: 10px;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        margin-top: 0;
+        margin-bottom: 2.5rem;
+        color: var(--gold-accent);
+        line-height: 1.2;
+      }
+
+      .category-title {
+        font-size: 0.95rem;
+        color: var(--teal-accent);
+        margin: 2rem 0 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+
+      /* List Items */
+      .place-item {
+        padding: 1.2rem 1.5rem;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-right: 3px solid transparent;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        opacity: 0.6;
+      }
+
+      .place-item:hover {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.08);
+        border-right: 3px solid var(--gold-accent);
+        transform: translateX(-4px);
+      }
+
+      .place-item.active {
+        opacity: 1;
+        background: linear-gradient(90deg, rgba(0,121,107,0.3) 0%, rgba(0,121,107,0.05) 100%);
+        border-right: 4px solid var(--gold-accent);
+        border-left: 1px solid var(--teal-accent);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      }
+
+      .place-title {
+        font-size: 1.25rem;
+        margin: 0 0 0.3rem 0;
+        color: #ffffff;
+      }
+
+      .place-subtitle {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .navbar { padding: 1rem; justify-content: center; }
+        .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .nav-link { font-size: 0.9rem; }
+        
+        .master-detail-container { flex-direction: column; padding-top: 70px; }
+        .detail-column { width: 100%; height: 45%; padding: 1rem; }
+        .master-column { width: 100%; height: 55%; padding: 1rem 1rem 2rem 1rem; }
+        
+        .info-overlay { bottom: 1rem; left: 1rem; width: calc(100% - 2rem); padding: 1rem; }
+        .info-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .info-desc { font-size: 0.85rem; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .btn-explore { padding: 0.5rem 1rem; font-size: 0.85rem; }
+        
+        .page-title { font-size: 1.8rem; margin-bottom: 1rem; text-align: center; }
+        .category-title { margin: 1rem 0 0.5rem; }
+        .place-item { padding: 0.8rem 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about-narmada.html" class="nav-link">About Narmada</a>
+        <a href="parikrama-guide.html" class="nav-link">Parikrama Guide</a>
+      </div>
+    </nav>
+    
+    <div class="master-detail-container">
+      <!-- 60% Left: Media Display -->
+      <div class="detail-column">
+        <div class="media-container">
+          <img id="detail-image" src="" alt="Place Image" />
+          <div class="image-overlay-gradient"></div>
+          
+          <div class="info-overlay">
+            <h2 id="detail-title" class="info-title hindi-text playfair"></h2>
+            <p id="detail-desc" class="info-desc hindi-text"></p>
+            <a href="#" class="btn-explore">Explore in 3D</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 40% Right: Interactive List -->
+      <div class="master-column">
+        <h1 class="page-title hindi-text playfair">महत्त्वपूर्ण स्थान</h1>
+        
+        <div id="places-list">
+          <!-- Content generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- GSAP for Smooth Cinematic Transitions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <script>
+      // Application Data
+      const placesData = [
+        // 1. उद्गम स्थल (अमरकंटक क्षेत्र)
+        {
+          id: 'amarkantak',
+          category: 'उद्गम स्थल (अमरकंटक क्षेत्र)',
+          title: 'अमरकंटक (Amarkantak)',
+          subtitle: 'Amarkantak, Madhya Pradesh',
+          desc: 'यह वह स्थान है जहाँ से पारंपरिक रूप से परिक्रमा की शुरुआत होती है। यह संपूर्ण क्षेत्र नर्मदा का पावन उद्गम स्थल है।',
+          image: 'Images/amarkantak.png'
+        },
+        {
+          id: 'narmada_mandir',
+          category: 'उद्गम स्थल (अमरकंटक क्षेत्र)',
+          title: 'नर्मदा मंदिर (Narmada Mandir)',
+          subtitle: 'Amarkantak, Madhya Pradesh',
+          desc: 'मुख्य मंदिर जो नदी के सटीक उद्गम बिंदु को चिह्नित करता है।',
+          image: 'Images/narmada_mandir.png'
+        },
+        {
+          id: 'mai_ki_bagiya',
+          category: 'उद्गम स्थल (अमरकंटक क्षेत्र)',
+          title: 'माई की बगिया (Mai Ki Bagiya)',
+          subtitle: 'Amarkantak, Madhya Pradesh',
+          desc: 'देवी नर्मदा को समर्पित एक शांत और सुंदर बगीचा, जहाँ माना जाता है कि उन्होंने अपने बचपन में खेला था।',
+          image: 'Images/mai_ki_bagiya.png'
+        },
+        {
+          id: 'dudh_dhara',
+          category: 'उद्गम स्थल (अमरकंटक क्षेत्र)',
+          title: 'दूध धारा (Dudh Dhara)',
+          subtitle: 'Amarkantak, Madhya Pradesh',
+          desc: '10 मीटर ऊंचा एक खूबसूरत जलप्रपात जिसका गिरता हुआ पानी दूधिया सफेद झाग बनाता है।',
+          image: 'Images/dudh_dhara.png'
+        },
+        {
+          id: 'kabir_chabutra',
+          category: 'उद्गम स्थल (अमरकंटक क्षेत्र)',
+          title: 'कबीर चबूतरा (Kabir Chabutra)',
+          subtitle: 'Amarkantak, Madhya Pradesh',
+          desc: 'एक अत्यधिक पूजनीय स्थल जहाँ कहा जाता है कि संत कबीर और गुरु नानक देव जी का मिलन हुआ था और उन्होंने आध्यात्मिकता पर चर्चा की थी।',
+          image: 'Images/kabir_chabutra.png'
+        },
+
+        // 2. संगमरमर की नगरी (जबलपुर क्षेत्र)
+        {
+          id: 'gwari_ghat',
+          category: 'संगमरमर की नगरी (जबलपुर क्षेत्र)',
+          title: 'ग्वारी घाट (Gwari Ghat)',
+          subtitle: 'Jabalpur, Madhya Pradesh',
+          desc: 'यह घाट अपनी गहरी आध्यात्मिक और मनमोहक शाम की नर्मदा आरती के लिए प्रसिद्ध है।',
+          image: 'Images/gwari_ghat.png'
+        },
+        {
+          id: 'bhedaghat',
+          category: 'संगमरमर की नगरी (जबलपुर क्षेत्र)',
+          title: 'भेड़ाघाट (Bhedaghat)',
+          subtitle: 'Jabalpur, Madhya Pradesh',
+          desc: 'संगमरमर की चट्टानों (Marble Rocks) और धुआंधार जलप्रपात (Dhuandhar Falls) के लिए विश्व प्रसिद्ध। यहाँ नर्मदा नदी 100 फीट ऊंची सफेद चट्टानों के बीच से बहती है, जो एक अद्भुत दृश्य प्रस्तुत करती है।',
+          image: 'Images/bhedaghat.png'
+        },
+        {
+          id: 'dhuandhar',
+          category: 'संगमरमर की नगरी (जबलपुर क्षेत्र)',
+          title: 'धुआंधार जलप्रपात (Dhuandhar Falls)',
+          subtitle: 'Jabalpur, Madhya Pradesh',
+          desc: 'एक शक्तिशाली जलप्रपात जिसके पानी की तेज बौछार से धुएं जैसा कोहरा ("धुआं") बनता है।',
+          image: 'Images/dhuandhar.png'
+        },
+        {
+          id: 'chausath_yogini',
+          category: 'संगमरमर की नगरी (जबलपुर क्षेत्र)',
+          title: 'चौसठ योगिनी मंदिर (Chausath Yogini Temple)',
+          subtitle: 'Jabalpur, Madhya Pradesh',
+          desc: 'एक दुर्लभ, प्राचीन वृत्ताकार मंदिर जिसमें भगवान शिव और देवी पार्वती के विवाह की प्रतिमाएं स्थापित हैं।',
+          image: 'Images/chausath_yogini.png'
+        },
+
+        // 3. प्राचीन पौराणिक स्थल
+        {
+          id: 'koteshwar',
+          category: 'प्राचीन पौराणिक स्थल',
+          title: 'कोटेश्वर तीर्थ (Koteshwar Teerth)',
+          subtitle: 'Ancient Mythology',
+          desc: 'एक ऐसा पवित्र स्थल जहाँ भगवान कुबेर के पुत्र (कुंद), पांडवों और ऋषि मार्कण्डेय ने तपस्या की थी या निवास किया था।',
+          image: 'Images/koteshwar.png'
+        },
+        {
+          id: 'gangali_ghat',
+          category: 'प्राचीन पौराणिक स्थल',
+          title: 'गांगली घाट (Gangali Ghat)',
+          subtitle: 'Ancient Mythology',
+          desc: 'वह पौराणिक स्थल जहाँ पाप धोने के लिए देवी गंगा प्रकट हुई थीं, और जहाँ भगवान शिव और नंदी का मिलन हुआ था (वर्तमान में यहाँ नंदेश्वर महादेव मंदिर है)।',
+          image: 'Images/gangali_ghat.png'
+        },
+        {
+          id: 'meghnath_ghat',
+          category: 'प्राचीन पौराणिक स्थल',
+          title: 'मेघनाथ घाट (Meghnath Ghat)',
+          subtitle: 'Ancient Mythology',
+          desc: 'वह स्थान जहाँ रावण पुत्र मेघनाथ हिमालय से दो शिवलिंग लाए थे और यहाँ कठोर तपस्या की थी।',
+          image: 'Images/meghnath_ghat.png'
+        },
+        {
+          id: 'bodhwada',
+          category: 'प्राचीन पौराणिक स्थल',
+          title: 'बोधवाडा (Bodhwada)',
+          subtitle: 'Ancient Mythology',
+          desc: 'एक अत्यंत पवित्र स्थान जहाँ प्राचीन ग्रंथों के अनुसार स्वयं देवताओं ने अपनी नर्मदा परिक्रमा शुरू और समाप्त की थी (यहाँ देवपथ शिवलिंग स्थापित है)।',
+          image: 'Images/bodhwada.png'
+        },
+
+        // 4. प्रमुख पड़ाव और मंदिर
+        {
+          id: 'omkareshwar',
+          category: 'प्रमुख पड़ाव और मंदिर',
+          title: 'ओंकारेश्वर (Omkareshwar)',
+          subtitle: 'Khandwa, Madhya Pradesh',
+          desc: 'भगवान शिव के 12 ज्योतिर्लिंगों में से एक। यह पवित्र द्वीप नर्मदा नदी के मध्य में स्थित है और इसका आकार हिंदू प्रतीक "ॐ" (Om) के समान माना जाता है।',
+          image: 'Images/omkareshwar.png'
+        },
+        {
+          id: 'haranphal',
+          category: 'प्रमुख पड़ाव और मंदिर',
+          title: 'हारनफाल (Haranphal)',
+          subtitle: 'Major Stop',
+          desc: 'एक ऐसा स्थान जहाँ नदी इतनी संकरी हो जाती है कि कहा जाता है कि पुराने समय में हिरण (हरण) इसे छलांग लगाकर पार कर लेते थे।',
+          image: 'Images/haranphal.png'
+        },
+        {
+          id: 'kulwat',
+          category: 'प्रमुख पड़ाव और मंदिर',
+          title: 'कुलवट (Kulwat)',
+          subtitle: 'Near Hathni River',
+          desc: 'हथनी नदी के पास स्थित यह स्थान अपने हनुमान मंदिर और तीर्थयात्रियों को निःशुल्क भोजन (सदावृत्त) एवं विश्राम प्रदान करने के लिए जाना जाता है।',
+          image: 'Images/kulwat.png'
+        },
+        {
+          id: 'khapparmal',
+          category: 'प्रमुख पड़ाव और मंदिर',
+          title: 'खप्परमाल शूलपाणी (Khapparmal Shulpani)',
+          subtitle: 'Uttam Seva Dham',
+          desc: '\'उत्तम सेवा धाम\' का स्थान, जो तीर्थयात्रियों की सेवा और जनजातीय बच्चों की शिक्षा के लिए समर्पित एक आधुनिक आश्रम है।',
+          image: 'Images/khapparmal.png'
+        },
+
+        // 5. पश्चिमी छोर और आधुनिक स्थल
+        {
+          id: 'punasa_dam',
+          category: 'पश्चिमी छोर और आधुनिक स्थल',
+          title: 'पुनासा बांध (Punasa Dam)',
+          subtitle: 'Modern Site',
+          desc: 'नदी पर बना एक प्रमुख और विशाल आधुनिक जलविद्युत और सिंचाई बांध।',
+          image: 'Images/punasa_dam.png'
+        },
+        {
+          id: 'poicha',
+          category: 'पश्चिमी छोर और आधुनिक स्थल',
+          title: 'पोईचा (Poicha)',
+          subtitle: 'Gujarat',
+          desc: 'गुजरात में नदी के तट पर स्थित एक भव्य, अत्यधिक देखा जाने वाला और सुंदर आधुनिक मंदिर परिसर।',
+          image: 'Images/poicha.png'
+        },
+        {
+          id: 'statue_of_unity',
+          category: 'पश्चिमी छोर और आधुनिक स्थल',
+          title: 'स्टेच्यू ऑफ यूनिटी (Statue of Unity)',
+          subtitle: 'Gujarat',
+          desc: 'दुनिया की सबसे ऊंची प्रतिमा, जो नर्मदा के तट पर गर्व से खड़ी है।',
+          image: 'Images/statue_of_unity.png'
+        },
+        {
+          id: 'rewa_sagar',
+          category: 'पश्चिमी छोर और आधुनिक स्थल',
+          title: 'रेवा सागर (Rewa Sagar)',
+          subtitle: 'Arabian Sea',
+          desc: 'वह अंतिम और पवित्र बिंदु जहाँ नर्मदा नदी अंततः अरब सागर (समुद्र) में विलीन हो जाती है।',
+          image: 'Images/rewa_sagar.png'
+        }
+      ];
+
+      // Elements
+      const listContainer = document.getElementById('places-list');
+      const detailImage = document.getElementById('detail-image');
+      const detailTitle = document.getElementById('detail-title');
+      const detailDesc = document.getElementById('detail-desc');
+
+      let activeId = null;
+
+      // Initialize App
+      function init() {
+        renderList();
+        // Select the first item by default
+        if (placesData.length > 0) {
+          selectPlace(placesData[0].id);
+        }
+      }
+
+      // Render the right-side list grouped by categories
+      function renderList() {
+        let currentCategory = '';
+        let html = '';
+
+        placesData.forEach(place => {
+          if (place.category !== currentCategory) {
+            html += `<h3 class="category-title hindi-text">${place.category}</h3>`;
+            currentCategory = place.category;
+          }
+          
+          html += `
+            <div class="place-item" id="item-${place.id}" onclick="selectPlace('${place.id}')">
+              <h4 class="place-title hindi-text">${place.title}</h4>
+              <p class="place-subtitle">${place.subtitle}</p>
+            </div>
+          `;
+        });
+
+        listContainer.innerHTML = html;
+      }
+
+      // Handle Selection & Animation
+      function selectPlace(id) {
+        if (activeId === id) return; // Prevent re-animating the same item
+        activeId = id;
+
+        const place = placesData.find(p => p.id === id);
+
+        // UI Updates for the List
+        document.querySelectorAll('.place-item').forEach(el => el.classList.remove('active'));
+        document.getElementById(`item-${id}`).classList.add('active');
+
+        // Cinematic Transition via GSAP
+        const tl = gsap.timeline();
+
+        // 1. Fade image to dark (not completely black for smoother UX) & slide text down
+        tl.to(detailImage, { opacity: 0.3, duration: 0.3, ease: "power2.inOut" }, 0)
+          .to(".info-overlay", { y: 20, opacity: 0, duration: 0.3, ease: "power2.in" }, 0)
+          
+          // 2. Swap data instantly while hidden
+          .call(() => {
+            detailImage.src = place.image;
+            detailTitle.innerText = place.title;
+            detailDesc.innerText = place.desc;
+          })
+          
+          // 3. Reveal new content
+          .to(detailImage, { opacity: 1, duration: 0.6, ease: "power2.out" })
+          .to(".info-overlay", { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, "-=0.4");
+      }
+
+      // Boot up
+      init();
+    </script>
+  </body>
+</html>

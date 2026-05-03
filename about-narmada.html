@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Narmada Parikrama - Home</title>
+    <title>Narmada Parikrama - About Narmada</title>
     
-    <!-- Premium Typography: Merriweather for headings, Open Sans for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Devanagari:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     
     <style>
-      /* High-end UI Styles for the Home Page */
+      /* High-end UI Styles matching Home Page */
       :root {
         --primary: #00796b;
         --primary-dark: #005a4f;
@@ -74,11 +73,9 @@
         position: relative;
         height: 100vh;
         min-height: 600px;
-        /* Using your new image as a parallax background */
-        background-image: url('Images/home_image.png');
+        background-image: url('Images/about_narmada.png');
         background-size: cover;
         background-position: center;
-        background-attachment: fixed; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -96,29 +93,40 @@
       .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 800px;
-        padding: 0 2rem;
+        max-width: 900px;
+        /* Glass Card Styles */
+        padding: 3rem;
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        /* Inner Scrolling */
+        max-height: 75vh;
+        overflow-y: auto;
       }
 
-      .hero-content h1 {
-        font-size: 4rem;
-        margin-bottom: 1rem;
+      /* Custom scrollbar for the glass card */
+      .hero-content::-webkit-scrollbar {
+        width: 8px;
+      }
+      .hero-content::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+      }
+
+      .hero-content h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
         line-height: 1.2;
         text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        color: white;
       }
 
       .hero-content p {
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
         font-weight: 400;
         text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
+        line-height: 1.8;
       }
 
       .btn-primary {
@@ -132,6 +140,7 @@
         text-decoration: none;
         box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
         transition: all 0.3s ease;
+        margin-top: 1.5rem;
       }
 
       .btn-primary:hover {
@@ -142,15 +151,12 @@
 
       /* Mobile Responsiveness */
       @media (max-width: 768px) {
-        body { overflow-y: auto; overflow-x: hidden; }
         .navbar { padding: 1.5rem 1rem; justify-content: center; }
         .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
         .nav-link { font-size: 0.95rem; }
-        .hero-content h1 { font-size: 2.8rem; }
-        .hero-content h2 { font-size: 1.5rem; }
-        .hero-content p { font-size: 1.05rem; }
-        .hero-buttons { flex-direction: column; width: 100%; gap: 1rem; }
-        .btn-primary { width: 100%; box-sizing: border-box; }
+        .hero-content { padding: 1.5rem; max-height: 80vh; width: 90%; }
+        .hero-content h2 { font-size: 2.2rem; }
+        .hero-content p { font-size: 1rem; }
       }
     </style>
   </head>
@@ -163,20 +169,15 @@
       </div>
     </nav>
     
-    <!-- Hero Banner with Background Image -->
     <header class="hero-section">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 class="hindi-text">नर्मदा परिक्रमा</h1>
-        <h2 class="hindi-text">आस्था और प्रवाह की एक पवित्र यात्रा </h2>
-        <p class="hindi-text">मध्य भारत की सबसे श्रद्धेय नदी के किनारे 1,312 किलोमीटर लंबे आध्यात्मिक पथ का अनुभव करें।</p>
-        <div class="hero-buttons">
-          <a href="about-narmada.html" class="btn-primary">About Narmada</a>
-          <a href="parikrama-guide.html" class="btn-primary">Narmada Parikrama</a>
-        </div>
+        <h2 class="hindi-text">पवित्र नर्मदा के बारे में</h2>
+        <p class="hindi-text">
+          नर्मदा नदी को मध्य प्रदेश की जीवन रेखा माना जाता है, जिसका उद्गम अमरकंटक शिखर से होता है और जिसे मध्यप्रदेश शासन द्वारा एक जीवित ईकाई का दर्जा प्रदान किया गया है। पौराणिक और धार्मिक मान्यताओं के अनुसार, नर्मदा भगवान शिव की पुत्री हैं जिनका जन्म उनके पसीने से हुआ था। इसे "कुंवारी नदी" भी कहा जाता है, जो एक कथा के अनुसार सोनभद्र और अपनी सहेली जुहिला के कारण उल्टी दिशा में बहती है। धार्मिक दृष्टि से नर्मदा को "तीर्थों में अग्रज" और मोक्षदायिनी माना गया है; ऐसी मान्यता है कि इसके दर्शन मात्र से ही सभी पापों का नाश हो जाता है और पुण्य फल की प्राप्ति होती है।
+        </p>
+        <a href="important-places.html" class="btn-primary hindi-text">महत्त्वपूर्ण स्थान</a>
       </div>
     </header>
-      
-    <script src="script.js"></script>
   </body>
 </html>
